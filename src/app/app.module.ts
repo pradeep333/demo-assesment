@@ -4,31 +4,39 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+
+import { HttpClientModule } from '@angular/common/http';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { FoodsService } from '../pages/home/services/foods.service';
+import {FoodDetails} from '../pages/foodDetails/foodDetails';
+import { Favs } from '../pages/favs/favs';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    FoodDetails,
+    Favs
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    FoodDetails,
+    Favs
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    FoodsService,
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }

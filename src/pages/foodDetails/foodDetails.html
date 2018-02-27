@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Food Details</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-icon name="ios-star-outline" *ngIf="!isInFavs" (click)="addToFavs()"></ion-icon>
+      <ion-icon name="star" *ngIf="isInFavs"></ion-icon>
+      {{selectedItemName}}
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let item of nutrients">
+          <div>
+            <strong class="align left"> {{item.name}}</strong>
+            <span>{{item.value}} - {{item.unit}}</span>
+          </div>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  {{selectedItemId}}
+</ion-content>
